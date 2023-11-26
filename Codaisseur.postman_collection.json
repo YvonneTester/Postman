@@ -1,0 +1,390 @@
+{
+	"info": {
+		"_postman_id": "68e74d78-b7aa-4a96-9210-2262fac7d29a",
+		"name": "Codaisseur",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31273180"
+	},
+	"item": [
+		{
+			"name": "ROOT",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "jwt",
+					"jwt": [
+						{
+							"key": "algorithm",
+							"value": "HS256",
+							"type": "string"
+						},
+						{
+							"key": "isSecretBase64Encoded",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "payload",
+							"value": "{}",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "headerPrefix",
+							"value": "Bearer",
+							"type": "string"
+						},
+						{
+							"key": "queryParamKey",
+							"value": "token",
+							"type": "string"
+						},
+						{
+							"key": "header",
+							"value": "{}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}",
+					"host": [
+						"{{baseUrl}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Yvonne\",\r\n    \"email\": \"Yvonne@equals.amsterdam\",\r\n    \"password\": \"Vonny\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/signup",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Token",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjYsImlhdCI6MTcwMDQ5NDk0NiwiZXhwIjoxNzAwNTAyMTQ2fQ.7Xm2JddQBjMmpIQsQ4En7nkPoE5Ci_bo08rmgt9KNNY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{baseUrl}}/login",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "me",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ".get(\"/me\", { headers: { Authorization: \"Bearer <eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjYsImlhdCI6MTcwMDQ5NDk0NiwiZXhwIjoxNzAwNTAyMTQ2fQ.7Xm2JddQBjMmpIQsQ4En7nkPoE5Ci_bo08rmgt9KNNY>\" } })",
+					"options": {
+						"raw": {
+							"language": "javascript"
+						}
+					}
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "posts",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjYsImlhdCI6MTcwMDQ5NDk0NiwiZXhwIjoxNzAwNTAyMTQ2fQ.7Xm2JddQBjMmpIQsQ4En7nkPoE5Ci_bo08rmgt9KNNY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Yvonne's Post\",\r\n    \"content\": \"Als je dit kan lezen, dan is het me gelukt!\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/posts",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Like",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjYsImlhdCI6MTcwMDQ5NDk0NiwiZXhwIjoxNzAwNTAyMTQ2fQ.7Xm2JddQBjMmpIQsQ4En7nkPoE5Ci_bo08rmgt9KNNY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/posts/:id/likes?=9",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"posts",
+						":id",
+						"likes"
+					],
+					"query": [
+						{
+							"key": null,
+							"value": "9"
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Like",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjYsImlhdCI6MTcwMDQ5NDk0NiwiZXhwIjoxNzAwNTAyMTQ2fQ.7Xm2JddQBjMmpIQsQ4En7nkPoE5Ci_bo08rmgt9KNNY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/posts/:id/likes?=9",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"posts",
+						":id",
+						"likes"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "9"
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Comment",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjYsImlhdCI6MTcwMDQ5NDk0NiwiZXhwIjoxNzAwNTAyMTQ2fQ.7Xm2JddQBjMmpIQsQ4En7nkPoE5Ci_bo08rmgt9KNNY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"text\": \"Jippie! Dit gaat lekkerrrrr!!\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/posts/9/comments",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"posts",
+						"9",
+						"comments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Comment",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjYsImlhdCI6MTcwMDQ5NDk0NiwiZXhwIjoxNzAwNTAyMTQ2fQ.7Xm2JddQBjMmpIQsQ4En7nkPoE5Ci_bo08rmgt9KNNY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"text\": \"Jippie! Dit gaat lekkerrrrr!!\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/posts/9/comments",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"posts",
+						"9",
+						"comments"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://coders-network-api.herokuapp.com",
+			"type": "string"
+		}
+	]
+}
